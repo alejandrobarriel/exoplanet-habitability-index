@@ -28,6 +28,12 @@ The project includes:
 - Statistical characterization of the processed dataset
 - Correlation analysis and identification of highly related variables
 - Formal definition of the habitability index
+
+## 🚀 Live Application
+
+You can explore the interactive application here:
+
+https://habitableexoplanets-mioti.streamlit.app/
 - Construction of an Earth reference vector
 - Relative scaling of variables with respect to Earth-like conditions
 - Variable-level deviation calculation and aggregation through Euclidean distance
