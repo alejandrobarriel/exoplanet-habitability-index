@@ -10,6 +10,14 @@ This repository currently contains that initial collaborative version.
 
 A personal extended version of the project, including improvements and additional analysis, will be published in this repository in the future.
 
+
+## 🚀 Live Application
+
+You can explore the interactive application here:
+
+https://habitableexoplanets-mioti.streamlit.app/
+
+
 ## Project Overview
 
 The goal of this project is to build a deterministic habitability index for exoplanets using astrophysical and planetary parameters.
@@ -28,12 +36,6 @@ The project includes:
 - Statistical characterization of the processed dataset
 - Correlation analysis and identification of highly related variables
 - Formal definition of the habitability index
-
-## 🚀 Live Application
-
-You can explore the interactive application here:
-
-https://habitableexoplanets-mioti.streamlit.app/
 - Construction of an Earth reference vector
 - Relative scaling of variables with respect to Earth-like conditions
 - Variable-level deviation calculation and aggregation through Euclidean distance
@@ -42,3 +44,19 @@ https://habitableexoplanets-mioti.streamlit.app/
 - Interpretation of the top-ranked planets
 - Empirical coherence checks and exploratory validation of the index
 - Sensitivity analysis of the proposed formulation
+
+  
+## Project Structure
+
+exoplanet-habitability-index
+│
+├── DataSets/                # Exoplanet datasets (NASA archive)
+├── Images/                  # Images used in the Streamlit app
+├── PythonCode/              # Notebooks and analysis code
+│
+├── app_exoplanetas.py       # Main Streamlit application
+├── requirements.txt         # Python dependencies
+├── environment.yml.bak      # Environment configuration
+├── run_app.ps1              # Script to launch the app
+│
+└── README.md
