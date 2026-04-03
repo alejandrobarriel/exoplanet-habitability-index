@@ -1,0 +1,18 @@
+
+# TEMA: Oscuro
+[theme]
+base = "dark"
+primaryColor = "#56B4E9"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#262730"
+textColor = "#FAFAFA"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8501
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
