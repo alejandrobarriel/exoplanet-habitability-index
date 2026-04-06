@@ -160,14 +160,16 @@ st.markdown("""
         margin-bottom: 1rem;
     }
 
-    /* Radio horizontal de navegación */
+/* Radio horizontal de navegación */
+/*
     div[role="radiogroup"] {
         gap: 0.5rem;
     }
 
     div[role="radiogroup"] > label {
-        background: rgba(255,255,255,0.03);
+        background: #56B4E9;
         border: 1px solid rgba(255,255,255,0.06);
+        color: black !important;
         border-radius: 999px;
         padding: 0.55rem 0.95rem !important;
 
@@ -181,8 +183,13 @@ st.markdown("""
 
     /* Ocultar bolita del radio */
     div[role="radiogroup"] > label > div:first-child {
-        display: none;
+        display: none !important;
     }
+*/
+    
+    
+    /* Botones de navegación */
+    
 
     /* Inputs */
     .stNumberInput > div > div,
@@ -192,17 +199,46 @@ st.markdown("""
         border-radius: 14px !important;
     }
 
+/*
     .stButton > button {
         border-radius: 14px !important;
         font-weight: 700 !important;
     }
-    
+
     .stButton > button[kind="primary"] {
         background: #e91e8c !important;
         border-color: #e91e8c !important;
         color: white !important;
     }
+*/
 
+/* Botones de navegación: selector real de Streamlit */
+    div[data-testid="stButton"] > button[data-testid="stBaseButton-secondary"] {
+        background-color: rgba(86, 180, 233, 0.35) !important;
+        background-image: none !important;
+        border: 1px solid #56B4E9 !important;
+        color: white !important;
+        border-radius: 999px !important;
+        min-height: 44px !important;
+        font-weight: 700 !important;
+        box-shadow: none !important;
+    }
+
+    div[data-testid="stButton"] > button[data-testid="stBaseButton-secondary"]:hover {
+        background-color: #e91e8c !important;
+        background-image: none !important;
+        border-color: #e91e8c !important;
+        color: white !important;
+    }
+
+    div[data-testid="stButton"] > button[data-testid="stBaseButton-secondary"]:focus,
+    div[data-testid="stButton"] > button[data-testid="stBaseButton-secondary"]:active {
+        background-color: rgba(86, 180, 233, 0.12) !important;
+        background-image: none !important;
+        border-color: #56B4E9 !important;
+        color: #56B4E9 !important;
+        box-shadow: none !important;
+    }
 
     .stTabs [data-baseweb="tab-list"] {
         gap: 1rem;
@@ -842,19 +878,31 @@ render_top_shell()
 PAGES = [
     "Inicio",
     "Ranking",
-    "Vector Referencia",
+    "Vector Tierra",
     "Simulador",
     "Correlaciones",
     "Temperatura",
     "Estrellas"
 ]
 
-pagina = st.radio(
-    "Navegación principal",
-    PAGES,
-    horizontal=True,
-    label_visibility="collapsed"
-)
+
+# pagina = st.radio(
+#   "Navegación principal",
+#    PAGES,
+#    horizontal=True,
+#   label_visibility="collapsed"
+#)
+
+if "pagina" not in st.session_state:
+    st.session_state.pagina = "Inicio"
+
+cols = st.columns(len(PAGES))
+for i, page in enumerate(PAGES):
+    with cols[i]:
+        if st.button(page, key=f"nav_{i}", use_container_width=True):
+            st.session_state.pagina = page
+
+pagina = st.session_state.pagina
 
 st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
@@ -1147,7 +1195,7 @@ elif pagina == "Ranking":
     else:
         st.warning("No se encontraron resultados. Ajusta los filtros.")
 
-elif pagina == "Vector Referencia":
+elif pagina == "Vector Tierra":
     render_page_header(
         "Vector de referencia terrestre",
         "Ajuste manual del vector de referencia empleado en el cálculo del índice de habitabilidad."
